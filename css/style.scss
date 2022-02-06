@@ -125,10 +125,13 @@ main {
   bottom: 10%;
   left: 50%;
   transform: translate(-50%, 0);
+
   .quote {
     display: none;
     font-size: 1.6rem;
     margin-bottom: 0.3rem;
+    opacity: 0;
+
     &.on {
       display: block;
     }

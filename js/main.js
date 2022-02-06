@@ -94,10 +94,13 @@ window.addEventListener("scroll", (e) => {
     }
     if (artScrollTop < 33) {
       quote1.classList.add("on");
+      quote1.style.opacity = artScrollTop / 16.5;
     } else if (artScrollTop < 66) {
       quote2.classList.add("on");
+      quote2.style.opacity = Math.abs(artScrollTop - 33) / 16.5;
     } else if (artScrollTop < 100) {
       quote3.classList.add("on");
+      quote3.style.opacity = Math.abs(artScrollTop - 66) / 16.5;
     }
   }
 
