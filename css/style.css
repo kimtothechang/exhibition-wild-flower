@@ -13,6 +13,7 @@ body {
   background-color: #dfe1d6;
   -ms-overflow-style: none;
   font-family: "Nanum Brush Script", cursive;
+  overflow-x: hidden;
 }
 
 img {
@@ -93,7 +94,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  bottom: 6.5%;
+  bottom: 5.5%;
   left: 50%;
   width: 50%;
   max-width: 500px;
