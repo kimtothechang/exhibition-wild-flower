@@ -1,39 +1,33 @@
-let walk1;
-let walk2;
-let walk3;
-let walk4;
-let walk5;
-let scrollTop;
-let artWrapper;
-let artScrollTop;
-let invite;
-let inviteX;
-let walkArr = [];
-let svgName;
-let sidewalk;
-let inviteImg;
+// 움직이는 사람 엘리먼트
+const walk1 = document.querySelector(".walk1");
+const walk2 = document.querySelector(".walk2");
+const walk3 = document.querySelector(".walk3");
+const walk4 = document.querySelector(".walk4");
+const walk5 = document.querySelector(".walk5");
+const walkArr = [walk1, walk2, walk3, walk4, walk5];
 
-window.onload = function () {
-  walk1 = document.querySelector(".walk1");
-  walk2 = document.querySelector(".walk2");
-  walk3 = document.querySelector(".walk3");
-  walk4 = document.querySelector(".walk4");
-  walk5 = document.querySelector(".walk5");
-  walkArr = [walk1, walk2, walk3, walk4, walk5];
-  svgName = document.querySelector("svg");
-  quote1 = document.querySelector(".quote1");
-  quote2 = document.querySelector(".quote2");
-  quote3 = document.querySelector(".quote3");
-  sidewalk = document.querySelector(".walk");
+// 인도 엘리먼트
+const sidewalk = document.querySelector(".walk");
 
-  artWrapper = document.querySelector(".artWrapper");
-  invite = document.querySelector(".invite");
-  inviteX = document.querySelector(".inviteX");
-  inviteImg = document.querySelector(".inviteImg");
+// SVG 엘리먼트
+const svgName = document.querySelector("svg");
 
-  walk1.classList.add("on");
-};
+// 전시회 설명 엘리먼트
+const quote1 = document.querySelector(".quote1");
+const quote2 = document.querySelector(".quote2");
+const quote3 = document.querySelector(".quote3");
 
+// 열거된 사진 컨테이너 엘리먼트
+const artWrapper = document.querySelector(".artWrapper");
+
+// 초대장 컨테이너 및 배경사진 엘리먼트
+const invite = document.querySelector(".invite");
+const inviteImg = document.querySelector(".inviteImg");
+
+// 최초 렌더링 시 사람 렌더링
+walk1.classList.add("on");
+
+// 스크롤 할 경우 해당 걸음 모션 제외 제거
 const removeDuplication = (which) => {
   if (which !== 1) {
     walk1.classList.remove("on");
@@ -52,90 +46,111 @@ const removeDuplication = (which) => {
   }
 };
 
+// 전시회 설명 문구 FadeIn
+const fadeInQuotes = () => {
+  if (artScrollTop < 33) {
+    quote1.classList.add("on");
+    quote1.style.opacity = artScrollTop / 16.5;
+  } else if (artScrollTop < 66) {
+    quote2.classList.add("on");
+    quote2.style.opacity = Math.abs(artScrollTop - 33) / 16.5;
+  } else if (artScrollTop < 100) {
+    quote3.classList.add("on");
+    quote3.style.opacity = Math.abs(artScrollTop - 66) / 16.5;
+  }
+};
+
+// 초대장 FadeIn
+const fadeInInvite = () => {
+  if (artScrollTop < 92) {
+    inviteImg.style.opacity = 0.15;
+    invite.style.opacity = 0.2;
+  } else if (artScrollTop < 94) {
+    inviteImg.style.opacity = 0.3;
+    invite.style.opacity = 0.4;
+  } else if (artScrollTop < 96) {
+    inviteImg.style.opacity = 0.4;
+    invite.style.opacity = 0.6;
+  } else if (artScrollTop < 98) {
+    inviteImg.style.opacity = 0.5;
+    invite.style.opacity = 0.8;
+  } else if (artScrollTop < 100) {
+    inviteImg.style.opacity = 0.6;
+    invite.style.opacity = 1;
+  }
+};
+
+// 초대장 제외 FadeOut(80% 이상)
+const fadeOutAll = () => {
+  if (artScrollTop < 80) {
+    for (let i = 0; i < 5; i++) {
+      walkArr[i].style.opacity = 1;
+      //svgName.style.opacity = 1;
+      sidewalk.style.opacity = 1;
+    }
+  } else if (artScrollTop < 85) {
+    for (let i = 0; i < 5; i++) {
+      walkArr[i].style.opacity = 0.66;
+      //svgName.style.opacity = 0.66;
+      sidewalk.style.opacity = 0.66;
+    }
+  } else if (artScrollTop < 90) {
+    for (let i = 0; i < 5; i++) {
+      walkArr[i].style.opacity = 0.33;
+      //svgName.style.opacity = 0.33;
+      sidewalk.style.opacity = 0.33;
+    }
+  } else if (artScrollTop < 100) {
+    for (let i = 0; i < 5; i++) {
+      walkArr[i].style.opacity = 0;
+      //svgName.style.opacity = 0;
+      sidewalk.style.opacity = 0;
+    }
+
+    fadeInInvite();
+  }
+};
+
+// 스크롤 시 이벤트
 window.addEventListener("scroll", (e) => {
+  // 스크롤 값
   scrollTop = document.documentElement.scrollTop;
-  walkScrollTop = scrollTop % 200;
+  // 걷는 모션을 위한 스크롤값(0~399)
+  walkScrollTop = scrollTop % 400;
+  // 스크롤 값 백분율 전환 (0~100%)
   artScrollTop = Math.ceil(
     (scrollTop / (document.body.scrollHeight - window.outerHeight)) * 100
   );
 
   // walkingman 움직이는 모션 + FedeOut
   if (artScrollTop < 101) {
+    // 스크롤 90 이하 시 초대장 opacity 0
     if (artScrollTop < 90) {
-      inviteX.style.opacity = 0;
+      invite.style.opacity = 0;
     }
-    if (walkScrollTop < 40) {
+    // walkScrollTop 5등 분 후 걷는 모션 조절
+    if (walkScrollTop < 80) {
       removeDuplication(1);
       walk1.classList.add("on");
-    } else if (walkScrollTop < 80) {
+    } else if (walkScrollTop < 160) {
       removeDuplication(2);
       walk2.classList.add("on");
-    } else if (walkScrollTop < 120) {
+    } else if (walkScrollTop < 240) {
       removeDuplication(3);
       walk3.classList.add("on");
-    } else if (walkScrollTop < 160) {
+    } else if (walkScrollTop < 320) {
       removeDuplication(4);
       walk4.classList.add("on");
-    } else if (walkScrollTop < 200) {
+    } else if (walkScrollTop < 400) {
       removeDuplication(5);
       walk5.classList.add("on");
     }
-    if (artScrollTop < 80) {
-      for (let i = 0; i < 5; i++) {
-        walkArr[i].style.opacity = 1;
-        svgName.style.opacity = 1;
-        sidewalk.style.opacity = 1;
-      }
-    } else if (artScrollTop < 85) {
-      for (let i = 0; i < 5; i++) {
-        walkArr[i].style.opacity = 0.66;
-        svgName.style.opacity = 0.66;
-        sidewalk.style.opacity = 0.66;
-      }
-    } else if (artScrollTop < 90) {
-      for (let i = 0; i < 5; i++) {
-        walkArr[i].style.opacity = 0.33;
-        svgName.style.opacity = 0.33;
-        sidewalk.style.opacity = 0.33;
-      }
-    } else if (artScrollTop < 100) {
-      for (let i = 0; i < 5; i++) {
-        walkArr[i].style.opacity = 0;
-        svgName.style.opacity = 0;
-        sidewalk.style.opacity = 0;
-      }
 
-      if (artScrollTop < 92) {
-        inviteImg.style.opacity = 0.15;
-        inviteX.style.opacity = 0.2;
-      } else if (artScrollTop < 94) {
-        inviteImg.style.opacity = 0.3;
-        inviteX.style.opacity = 0.4;
-      } else if (artScrollTop < 96) {
-        inviteImg.style.opacity = 0.4;
-        inviteX.style.opacity = 0.6;
-      } else if (artScrollTop < 98) {
-        inviteImg.style.opacity = 0.5;
-        inviteX.style.opacity = 0.8;
-      } else if (artScrollTop < 100) {
-        inviteImg.style.opacity = 0.6;
-        inviteX.style.opacity = 1;
-      }
-    }
-    if (artScrollTop < 33) {
-      quote1.classList.add("on");
-      quote1.style.opacity = artScrollTop / 16.5;
-    } else if (artScrollTop < 66) {
-      quote2.classList.add("on");
-      quote2.style.opacity = Math.abs(artScrollTop - 33) / 16.5;
-    } else if (artScrollTop < 100) {
-      quote3.classList.add("on");
-      quote3.style.opacity = Math.abs(artScrollTop - 66) / 16.5;
-    }
+    fadeOutAll();
+    fadeInQuotes();
   }
 
-  console.log(artScrollTop);
-
+  // 사진 이동
   artWrapper.style.transform = `translate(${100 - artScrollTop * 3}%, 0)`;
 });
 
