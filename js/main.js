@@ -106,19 +106,19 @@ window.addEventListener("scroll", (e) => {
       }
 
       if (artScrollTop < 92) {
-        inviteImg.style.opacity = 0.1;
+        inviteImg.style.opacity = 0.15;
         inviteX.style.opacity = 0.2;
       } else if (artScrollTop < 94) {
-        inviteImg.style.opacity = 0.2;
+        inviteImg.style.opacity = 0.3;
         inviteX.style.opacity = 0.4;
       } else if (artScrollTop < 96) {
-        inviteImg.style.opacity = 0.3;
+        inviteImg.style.opacity = 0.4;
         inviteX.style.opacity = 0.6;
       } else if (artScrollTop < 98) {
-        inviteImg.style.opacity = 0.4;
+        inviteImg.style.opacity = 0.5;
         inviteX.style.opacity = 0.8;
       } else if (artScrollTop < 100) {
-        inviteImg.style.opacity = 0.5;
+        inviteImg.style.opacity = 0.6;
         inviteX.style.opacity = 1;
       }
     }
