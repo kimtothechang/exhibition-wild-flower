@@ -68,6 +68,41 @@ main {
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
     }
   }
+  .inviteX {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+    padding: 1rem 1rem;
+    opacity: 0;
+    z-index: 200;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
+  }
   .invite {
     position: absolute;
     display: flex;

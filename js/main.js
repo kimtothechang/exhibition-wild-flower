@@ -7,8 +7,11 @@ let scrollTop;
 let artWrapper;
 let artScrollTop;
 let invite;
+let inviteX;
 let walkArr = [];
 let svgName;
+let sidewalk;
+let inviteImg;
 
 window.onload = function () {
   walk1 = document.querySelector(".walk1");
@@ -21,9 +24,12 @@ window.onload = function () {
   quote1 = document.querySelector(".quote1");
   quote2 = document.querySelector(".quote2");
   quote3 = document.querySelector(".quote3");
+  sidewalk = document.querySelector(".walk");
 
   artWrapper = document.querySelector(".artWrapper");
   invite = document.querySelector(".invite");
+  inviteX = document.querySelector(".inviteX");
+  inviteImg = document.querySelector(".inviteImg");
 
   walk1.classList.add("on");
 };
@@ -55,6 +61,9 @@ window.addEventListener("scroll", (e) => {
 
   // walkingman 움직이는 모션 + FedeOut
   if (artScrollTop < 101) {
+    if (artScrollTop < 90) {
+      inviteX.style.opacity = 0;
+    }
     if (walkScrollTop < 40) {
       removeDuplication(1);
       walk1.classList.add("on");
@@ -75,21 +84,42 @@ window.addEventListener("scroll", (e) => {
       for (let i = 0; i < 5; i++) {
         walkArr[i].style.opacity = 1;
         svgName.style.opacity = 1;
+        sidewalk.style.opacity = 1;
       }
     } else if (artScrollTop < 85) {
       for (let i = 0; i < 5; i++) {
         walkArr[i].style.opacity = 0.66;
         svgName.style.opacity = 0.66;
+        sidewalk.style.opacity = 0.66;
       }
     } else if (artScrollTop < 90) {
       for (let i = 0; i < 5; i++) {
         walkArr[i].style.opacity = 0.33;
         svgName.style.opacity = 0.33;
+        sidewalk.style.opacity = 0.33;
       }
     } else if (artScrollTop < 100) {
       for (let i = 0; i < 5; i++) {
         walkArr[i].style.opacity = 0;
         svgName.style.opacity = 0;
+        sidewalk.style.opacity = 0;
+      }
+
+      if (artScrollTop < 92) {
+        inviteImg.style.opacity = 0.1;
+        inviteX.style.opacity = 0.2;
+      } else if (artScrollTop < 94) {
+        inviteImg.style.opacity = 0.2;
+        inviteX.style.opacity = 0.4;
+      } else if (artScrollTop < 96) {
+        inviteImg.style.opacity = 0.3;
+        inviteX.style.opacity = 0.6;
+      } else if (artScrollTop < 98) {
+        inviteImg.style.opacity = 0.4;
+        inviteX.style.opacity = 0.8;
+      } else if (artScrollTop < 100) {
+        inviteImg.style.opacity = 0.5;
+        inviteX.style.opacity = 1;
       }
     }
     if (artScrollTop < 33) {
@@ -102,10 +132,6 @@ window.addEventListener("scroll", (e) => {
       quote3.classList.add("on");
       quote3.style.opacity = Math.abs(artScrollTop - 66) / 16.5;
     }
-  }
-
-  if (artScrollTop > 90) {
-    invite.style.opacity = artScrollTop / 135;
   }
 
   console.log(artScrollTop);
