@@ -11,8 +11,6 @@
 
 body {
   background-color: #dfe1d6;
-  //   background-image: url("../img/background.jpeg");
-  //   background-size: contain;
   -ms-overflow-style: none;
   font-family: "Nanum Brush Script", cursive;
   overflow-x: hidden;
@@ -26,10 +24,10 @@ img {
 .line-container {
   position: fixed;
   padding: 4px;
-  top: -13%;
-  left: 0;
-  width: 10%;
-  height: 50%;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 4%;
   text-align: center;
   overflow: hidden;
   display: flex;
@@ -42,6 +40,8 @@ svg {
   display: inline-block;
   width: 100%;
   height: 45%;
+  //   width: 100%;
+  //   height: 45%;
 }
 
 main {
@@ -68,7 +68,7 @@ main {
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
     }
   }
-  .inviteX {
+  .invite {
     position: fixed;
     top: 40%;
     left: 50%;
@@ -93,30 +93,6 @@ main {
       height: 100%;
       opacity: 0;
     }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    p {
-      font-size: 1.4rem;
-    }
-  }
-  .invite {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    bottom: 5.5%;
-    left: 50%;
-    width: 50%;
-    max-width: 500px;
-    transform: translate(-50%, 0%);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
-    padding: 1rem 1rem;
-    opacity: 0;
 
     h2 {
       font-size: 2rem;
