@@ -24,6 +24,10 @@ const artWrapper = document.querySelector(".artWrapper");
 const invite = document.querySelector(".invite");
 const inviteImg = document.querySelector(".inviteImg");
 
+// forFrame
+let x = 0;
+let mx = 0;
+
 // 최초 렌더링 시 사람 렌더링
 walk1.classList.add("on");
 
@@ -113,6 +117,7 @@ const fadeOutAll = () => {
 
 // 스크롤 시 이벤트
 window.addEventListener("scroll", (e) => {
+  x = document.documentElement.scrollTop;
   // 스크롤 값
   scrollTop = document.documentElement.scrollTop;
   // 걷는 모션을 위한 스크롤값(0~399)
@@ -151,8 +156,25 @@ window.addEventListener("scroll", (e) => {
   }
 
   // 사진 이동
-  artWrapper.style.transform = `translate(${100 - artScrollTop * 3}%, 0)`;
+  //   artWrapper.style.transform = `translate(${
+  //     window.outerWidth - artScrollTop * 20
+  //   }px, 0)`;
+  loop();
 });
+
+function loop() {
+  if (window.outerWidth < 550) {
+    mx += (x / 4 - mx) * 0.05;
+    artWrapper.style.transform = `translate(${window.outerWidth - mx}px, 0)`;
+  } else {
+    mx += (x / 4 - mx) * 0.05;
+    artWrapper.style.transform = `translate(${
+      window.outerWidth - mx * 2.1
+    }px, 0)`;
+  }
+
+  window.requestAnimationFrame(loop);
+}
 
 // SVG Scroll
 let path = document.querySelector("path");
