@@ -21,6 +21,15 @@ img {
   margin-right: 1rem;
 }
 
+.forScroll {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  font-size: 1.6rem;
+  opacity: 1;
+}
+
 .line-container {
   position: fixed;
   padding: 4px;

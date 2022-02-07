@@ -24,7 +24,10 @@ const artWrapper = document.querySelector(".artWrapper");
 const invite = document.querySelector(".invite");
 const inviteImg = document.querySelector(".inviteImg");
 
-// forFrame
+// 스크롤 안내 문구
+const forScroll = document.querySelector(".forScroll");
+
+// forAnimationFrame
 let x = 0;
 let mx = 0;
 
@@ -129,6 +132,12 @@ window.addEventListener("scroll", (e) => {
 
   // walkingman 움직이는 모션 + FedeOut
   if (artScrollTop < 101) {
+    // 스크롤 5 이하 시 스크롤 안내 문구 제거
+    if (artScrollTop < 5) {
+      forScroll.style.opacity = (10 - 2 * artScrollTop) / 10;
+    } else {
+      forScroll.style.opacity = 0;
+    }
     // 스크롤 90 이하 시 초대장 opacity 0
     if (artScrollTop < 90) {
       invite.style.opacity = 0;
