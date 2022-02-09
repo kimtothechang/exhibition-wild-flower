@@ -69,21 +69,23 @@ const fadeInQuotes = () => {
 
 // 초대장 FadeIn
 const fadeInInvite = () => {
-  if (artScrollTop < 92) {
-    inviteImg.style.opacity = 0.15;
-    invite.style.opacity = 0.2;
-  } else if (artScrollTop < 94) {
-    inviteImg.style.opacity = 0.3;
-    invite.style.opacity = 0.4;
-  } else if (artScrollTop < 96) {
-    inviteImg.style.opacity = 0.4;
-    invite.style.opacity = 0.6;
-  } else if (artScrollTop < 98) {
-    inviteImg.style.opacity = 0.5;
-    invite.style.opacity = 0.8;
-  } else if (artScrollTop < 100) {
-    inviteImg.style.opacity = 0.6;
-    invite.style.opacity = 1;
+  if (artScrollTop > 89) {
+    if (artScrollTop < 92) {
+      inviteImg.style.opacity = 0.15;
+      invite.style.opacity = 0.2;
+    } else if (artScrollTop < 94) {
+      inviteImg.style.opacity = 0.3;
+      invite.style.opacity = 0.4;
+    } else if (artScrollTop < 96) {
+      inviteImg.style.opacity = 0.4;
+      invite.style.opacity = 0.6;
+    } else if (artScrollTop < 98) {
+      inviteImg.style.opacity = 0.5;
+      invite.style.opacity = 0.8;
+    } else if (artScrollTop < 100) {
+      inviteImg.style.opacity = 0.6;
+      invite.style.opacity = 1;
+    }
   }
 };
 
@@ -113,8 +115,6 @@ const fadeOutAll = () => {
       //svgName.style.opacity = 0;
       sidewalk.style.opacity = 0;
     }
-
-    fadeInInvite();
   }
 };
 
@@ -162,6 +162,9 @@ window.addEventListener("scroll", (e) => {
 
     fadeOutAll();
     fadeInQuotes();
+    fadeInInvite();
+
+    console.log(scrollTop);
   }
 
   // 사진 이동
@@ -173,10 +176,15 @@ window.addEventListener("scroll", (e) => {
 
 function loop() {
   if (window.outerWidth < 550) {
-    mx += (x / 4 - mx) * 0.05;
+    mx += (x / 2.4 - mx) * 0.05;
     artWrapper.style.transform = `translate(${window.outerWidth - mx}px, 0)`;
+  } else if (window.outerWidth < 1500) {
+    mx += (x / 2 - mx) * 0.05;
+    artWrapper.style.transform = `translate(${
+      window.outerWidth - mx * 2.1
+    }px, 0)`;
   } else {
-    mx += (x / 4 - mx) * 0.05;
+    mx += (x / 1.6 - mx) * 0.05;
     artWrapper.style.transform = `translate(${
       window.outerWidth - mx * 2.1
     }px, 0)`;
