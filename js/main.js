@@ -163,9 +163,16 @@ window.addEventListener("scroll", (e) => {
 });
 
 function loop() {
-  if (window.outerWidth < 550) {
-    mx += (x / 2.4 - mx) * 0.05;
-    artWrapper.style.transform = `translate(${window.outerWidth - mx}px, 0)`;
+  if (window.outerWidth < 400) {
+    mx += (x / 5 - mx) * 0.05;
+    artWrapper.style.transform = `translate(${
+      window.outerWidth - mx * 2.1
+    }px, 0)`;
+  } else if (window.outerWidth < 550) {
+    mx += (x / 4 - mx) * 0.05;
+    artWrapper.style.transform = `translate(${
+      window.outerWidth - mx * 2.1
+    }px, 0)`;
   } else if (window.outerWidth < 1500) {
     mx += (x / 2 - mx) * 0.05;
     artWrapper.style.transform = `translate(${
