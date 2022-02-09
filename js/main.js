@@ -94,26 +94,12 @@ const fadeOutAll = () => {
   if (artScrollTop < 80) {
     for (let i = 0; i < 5; i++) {
       walkArr[i].style.opacity = 1;
-      //svgName.style.opacity = 1;
       sidewalk.style.opacity = 1;
     }
-  } else if (artScrollTop < 85) {
+  } else {
     for (let i = 0; i < 5; i++) {
-      walkArr[i].style.opacity = 0.66;
-      //svgName.style.opacity = 0.66;
-      sidewalk.style.opacity = 0.66;
-    }
-  } else if (artScrollTop < 90) {
-    for (let i = 0; i < 5; i++) {
-      walkArr[i].style.opacity = 0.33;
-      //svgName.style.opacity = 0.33;
-      sidewalk.style.opacity = 0.33;
-    }
-  } else if (artScrollTop < 100) {
-    for (let i = 0; i < 5; i++) {
-      walkArr[i].style.opacity = 0;
-      //svgName.style.opacity = 0;
-      sidewalk.style.opacity = 0;
+      walkArr[i].style.opacity = (100 - artScrollTop) / 20;
+      sidewalk.style.opacity = (100 - artScrollTop) / 20;
     }
   }
 };
@@ -123,8 +109,8 @@ window.addEventListener("scroll", (e) => {
   x = document.documentElement.scrollTop;
   // 스크롤 값
   scrollTop = document.documentElement.scrollTop;
-  // 걷는 모션을 위한 스크롤값(0~399)
-  walkScrollTop = scrollTop % 400;
+  // 걷는 모션을 위한 스크롤값(0~150)
+  walkScrollTop = scrollTop % 150;
   // 스크롤 값 백분율 전환 (0~100%)
   artScrollTop = Math.ceil(
     (scrollTop / (document.body.scrollHeight - window.outerHeight)) * 100
@@ -138,24 +124,26 @@ window.addEventListener("scroll", (e) => {
     } else {
       forScroll.style.opacity = 0;
     }
+
     // 스크롤 90 이하 시 초대장 opacity 0
     if (artScrollTop < 90) {
       invite.style.opacity = 0;
     }
+
     // walkScrollTop 5등 분 후 걷는 모션 조절
-    if (walkScrollTop < 80) {
+    if (walkScrollTop < 30) {
       removeDuplication(1);
       walk1.classList.add("on");
-    } else if (walkScrollTop < 160) {
+    } else if (walkScrollTop < 60) {
       removeDuplication(2);
       walk2.classList.add("on");
-    } else if (walkScrollTop < 240) {
+    } else if (walkScrollTop < 90) {
       removeDuplication(3);
       walk3.classList.add("on");
-    } else if (walkScrollTop < 320) {
+    } else if (walkScrollTop < 120) {
       removeDuplication(4);
       walk4.classList.add("on");
-    } else if (walkScrollTop < 400) {
+    } else if (walkScrollTop < 150) {
       removeDuplication(5);
       walk5.classList.add("on");
     }
@@ -164,7 +152,7 @@ window.addEventListener("scroll", (e) => {
     fadeInQuotes();
     fadeInInvite();
 
-    console.log(scrollTop);
+    console.log(artScrollTop);
   }
 
   // 사진 이동
