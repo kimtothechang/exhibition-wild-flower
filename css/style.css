@@ -80,8 +80,6 @@ main {
   -webkit-transform: translate(100%, 0);
           transform: translate(100%, 0);
   padding: 1rem;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
 }
 
 .imgWrapper .artWrapper img {

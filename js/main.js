@@ -105,26 +105,18 @@ const fadeOutAll = () => {
 };
 
 // 걷는 사람 지날 경우 그림 fadeOut
-const faedOutArts = () => {
+const faedOutArts = (mx) => {
   const artAll = document.querySelectorAll(".art");
 
-  if (window.outerWidth < 475) {
-    for (let i = 0; i < artAll.length; i++) {
-      if (scrollTop - window.outerWidth / 2 > 250 * (i + 1)) {
-        artAll[i].style.transition = "all 1s linear";
-        artAll[i].style.opacity = 0;
-      } else {
-        artAll[i].style.opacity = 1;
-      }
-    }
-  } else {
-    for (let i = 0; i < artAll.length; i++) {
-      if (scrollTop - window.outerWidth / 2 > 167 * (i + 1)) {
-        artAll[i].style.transition = "all 1s linear";
-        artAll[i].style.opacity = 0;
-      } else {
-        artAll[i].style.opacity = 1;
-      }
+  for (let i = 0; i < artAll.length; i++) {
+    if (
+      window.outerWidth - mx * 2.1 <
+      window.outerWidth / 2 - artAll[0].height * 0.9 * i
+    ) {
+      artAll[i].style.transition = "all 1s linear";
+      artAll[i].style.opacity = 0;
+    } else {
+      artAll[i].style.opacity = 1;
     }
   }
 };
@@ -176,7 +168,7 @@ window.addEventListener("scroll", (e) => {
     fadeOutAll();
     fadeInQuotes();
     fadeInInvite();
-    faedOutArts();
+    faedOutArts(mx);
   }
 
   loop();
