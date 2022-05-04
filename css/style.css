@@ -13,7 +13,7 @@ body {
   background-color: #dfe1d6;
   font-family: 'Nanum Brush Script', cursive;
   -ms-overflow-style: none;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 img {
