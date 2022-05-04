@@ -11,9 +11,9 @@
 
 body {
   background-color: #dfe1d6;
+  font-family: 'Nanum Brush Script', cursive;
   -ms-overflow-style: none;
-  font-family: "Nanum Brush Script", cursive;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 img {
@@ -28,7 +28,7 @@ img {
   text-align: center;
   width: 100%;
   -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
   font-size: 1.4rem;
   opacity: 1;
 }
@@ -46,11 +46,11 @@ img {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   z-index: 50;
 }
 
@@ -78,7 +78,7 @@ main {
   top: 30%;
   width: 100%;
   -webkit-transform: translate(100%, 0);
-          transform: translate(100%, 0);
+  transform: translate(100%, 0);
   padding: 1rem;
 }
 
@@ -86,7 +86,7 @@ main {
   max-width: 167px;
   max-height: 230px;
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .imgWrapper .invite {
@@ -94,24 +94,24 @@ main {
   top: 40%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 300px;
   height: 200px;
   -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
   padding: 1rem 1rem;
   opacity: 0;
   z-index: 200;
@@ -152,7 +152,7 @@ main {
   z-index: 100;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .walkingman img.on {
@@ -167,7 +167,7 @@ main {
   bottom: 10%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
 .quoteWrapper .quote {
